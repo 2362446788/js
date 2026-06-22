@@ -19,7 +19,14 @@
  * - 飞书《大前端面试宝典》Q76/Q79/Q104
  */
 function getType(value) {
-  // TODO
+  if (value === null) {
+    return null;
+  }
+  let type = typeof value;
+  if (type !== "object") {
+    return type;
+  }
+  return Object.prototype.toString.call(value).slice(8, -1).toLocaleLowerCase();
 }
 
 /**
@@ -77,10 +84,4 @@ function preciseSub(a, b) {
   // TODO
 }
 
-export {
-  getType,
-  isEmptyObject,
-  arrayLikeToArray,
-  preciseAdd,
-  preciseSub,
-};
+export { getType, isEmptyObject, arrayLikeToArray, preciseAdd, preciseSub };

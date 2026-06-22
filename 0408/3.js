@@ -4,9 +4,9 @@ a.x = a = { n: 2 };
 console.log(a.x);
 console.log(b); */
 
-/* debugger;
-var a = 12;
-let b = 13; */
+// debugger;
+// var a = 12;
+// let b = 13;
 
 
 let x = [12, 23];
