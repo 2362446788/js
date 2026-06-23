@@ -313,7 +313,6 @@
 
 
     <pre class="prettyprint hljs-dark"><code class="language-javascript hljs"><div class="hljs-line"><span class="hljs-comment">//函数是个渣男</span>
-</div><div class="hljs-line"><span class="hljs-comment">//注意：严格模式下 'use strict' 不会存在块级上下文中出现变量提升，即下面的第一行就会报 undefined 的错误：Uncaught ReferenceError: foo is not defined</span>
 </div><div class="hljs-line"><span class="hljs-built_in">console</span>.log(foo);
 </div><div class="hljs-line"><span class="hljs-keyword">if</span>(<span class="hljs-number">1</span>===<span class="hljs-number">1</span>){
 </div><div class="hljs-line">    <span class="hljs-built_in">console</span>.log(foo);
@@ -326,9 +325,7 @@
 
 
 
-    <pre class="prettyprint hljs-dark"><code class="language-javascript hljs"><div class="hljs-line"><span class="hljs-comment">//下面在非严格模式下，IIFE 自执行函数中，会出现变量提升，所以 g 变成了 undefined，执行 g() 的时候就报错了</span>
-</div><div class="hljs-line"><span class="hljs-comment">//严格模式下第一行就会报错，因为不允许隐式声明全局变量，这里的 f = function () {return true;}; 会直接抛出错误：Uncaught ReferenceError: f is not defined</span>
-</div><div class="hljs-line">f = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;};
+    <pre class="prettyprint hljs-dark"><code class="language-javascript hljs"><div class="hljs-line">f = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;};
 </div><div class="hljs-line">g = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;};
 </div><div class="hljs-line">(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
 </div><div class="hljs-line">    <span class="hljs-keyword">if</span> (g() &amp;&amp; [] == ![]) {
@@ -576,7 +573,7 @@
 
 
     <pre class="prettyprint hljs-dark"><code class="language-javascript hljs"><div class="hljs-line"><span class="hljs-comment">/* ---index.html--- */</span>
-</div><div class="hljs-line">&lt;!--
+</div><div class="hljs-line">&lt;!-- 
 </div><div class="hljs-line">   type=<span class="hljs-string">"module"</span> 让浏览器支持ES6Module规范
 </div><div class="hljs-line">   必须是基于HTTP/HTTPS协议预览
 </div><div class="hljs-line">--&gt;
@@ -808,7 +805,7 @@
 </div><div class="hljs-line">    <span class="hljs-comment">// 传递的第二项是给result设置的初始值  item从数组第一项开始迭代</span>
 </div><div class="hljs-line">    <span class="hljs-keyword">return</span> result + item;
 </div><div class="hljs-line">}, <span class="hljs-number">0</span>);
-</div><div class="hljs-line"><span class="hljs-built_in">console</span>.log(total);
+</div><div class="hljs-line"><span class="hljs-built_in">console</span>.log(total); 
 </div></code></pre>
 
     <h4 id="js高阶编程技巧惰性思想">JS高阶编程技巧：惰性思想</h4>

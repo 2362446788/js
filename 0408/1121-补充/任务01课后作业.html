@@ -1,0 +1,119 @@
+<!DOCTYPE html><html><head><title>任务01课后作业</title><meta charset='utf-8'><link href='https://cdn.maxiang.io/res-min/themes/marxico.css' rel='stylesheet'><style>
+.note-content  {font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "WenQuanYi Micro Hei", SimSun, Song, sans-serif;}
+
+</style></head><body><div id='preview-contents' class='note-content'>
+                        
+                    
+
+<h4 id="任务01课后作业">任务01课后作业</h4>
+
+<ol><li rel="1"><p>JS中有哪些数据类型</p></li>
+<li rel="2"><p>谈谈Symbol类型值在项目中的应用</p></li>
+<li rel="3"><p>服务器返回一个超长ID(以字符串形式)，我们需要对ID进行运算，并且把运算完的结果发送给服务器，请问如何处理？</p></li>
+<li rel="4"><p>下面代码输出结果？</p></li>
+</ol>
+
+<pre class="prettyprint hljs-dark"><code class="language-javascript hljs"><div class="hljs-line"><span class="hljs-keyword">typeof</span> <span class="hljs-keyword">typeof</span> <span class="hljs-keyword">typeof</span> [<span class="hljs-number">10</span>,<span class="hljs-number">20</span>,<span class="hljs-number">30</span>]
+</div></code></pre>
+
+<ol start="5"><li rel="5"><p>typeof null 的结果为啥是 “object” ？</p></li>
+<li rel="6"><p>下面代码输出结果？</p></li>
+</ol>
+
+<pre class="prettyprint hljs-dark"><code class="language-javascript hljs"><div class="hljs-line"><span class="hljs-keyword">let</span> obj={
+</div><div class="hljs-line">    <span class="hljs-attr">x</span>:<span class="hljs-number">1</span>,
+</div><div class="hljs-line">    <span class="hljs-attr">y</span>:[<span class="hljs-number">10</span>,<span class="hljs-number">20</span>]
+</div><div class="hljs-line">};
+</div><div class="hljs-line"><span class="hljs-keyword">let</span> obj2=obj;
+</div><div class="hljs-line"><span class="hljs-keyword">let</span> obj3={
+</div><div class="hljs-line">   ...obj2
+</div><div class="hljs-line">};
+</div><div class="hljs-line">obj2.x=<span class="hljs-number">100</span>;
+</div><div class="hljs-line">obj2.y[<span class="hljs-number">1</span>]=<span class="hljs-number">30</span>;
+</div><div class="hljs-line">obj3.x=<span class="hljs-number">200</span>;
+</div><div class="hljs-line">obj3.y[<span class="hljs-number">2</span>]=<span class="hljs-number">40</span>;
+</div><div class="hljs-line">obj=obj3.y={
+</div><div class="hljs-line">   <span class="hljs-attr">x</span>:<span class="hljs-number">0</span>,
+</div><div class="hljs-line">   <span class="hljs-attr">y</span>:[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>]
+</div><div class="hljs-line">};
+</div><div class="hljs-line"><span class="hljs-built_in">console</span>.log(obj,obj2,obj3);
+</div></code></pre>
+
+<ol start="7"><li rel="7"><p>下面代码输出结果</p></li>
+</ol>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-javascript hljs"><div class="hljs-line"><span class="hljs-built_in">isNaN</span>(<span class="hljs-built_in">parseInt</span>(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>())) + <span class="hljs-built_in">Number</span>([<span class="hljs-number">1</span>]) + <span class="hljs-keyword">typeof</span> <span class="hljs-literal">undefined</span>;
+</div><div class="hljs-line">!(!<span class="hljs-string">"Number(undefined)"</span>);
+</div><div class="hljs-line"><span class="hljs-built_in">parseFloat</span>(<span class="hljs-string">"1.6px"</span>) + <span class="hljs-built_in">parseInt</span>(<span class="hljs-string">"1.2px"</span>) + <span class="hljs-keyword">typeof</span> <span class="hljs-built_in">parseInt</span>(<span class="hljs-literal">null</span>);
+</div><div class="hljs-line"><span class="hljs-built_in">Boolean</span>(<span class="hljs-built_in">Number</span>(<span class="hljs-string">""</span>)) + !<span class="hljs-built_in">isNaN</span>(<span class="hljs-built_in">Number</span>(<span class="hljs-literal">null</span>)) + <span class="hljs-built_in">Boolean</span>(<span class="hljs-string">"parseInt([])"</span>) + <span class="hljs-keyword">typeof</span> !(<span class="hljs-literal">null</span>);
+</div><div class="hljs-line"><span class="hljs-built_in">isNaN</span>(<span class="hljs-built_in">Number</span>(!!<span class="hljs-built_in">Number</span>(<span class="hljs-built_in">parseInt</span>(<span class="hljs-string">"0.8"</span>))));
+</div><div class="hljs-line">!<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">parseFloat</span>(<span class="hljs-string">"0"</span>);
+</div><div class="hljs-line"><span class="hljs-built_in">Number</span>(<span class="hljs-string">""</span>);
+</div><div class="hljs-line"><span class="hljs-number">16</span>+{};
+</div><div class="hljs-line">{}+<span class="hljs-number">16</span>;
+</div><div class="hljs-line"><wbr>
+</div><div class="hljs-line"><span class="hljs-keyword">var</span> n = <span class="hljs-number">6</span>;
+</div><div class="hljs-line"><span class="hljs-built_in">console</span>.log((n++) + n-- + <span class="hljs-number">5</span> + --n +--n);
+</div><div class="hljs-line"><span class="hljs-built_in">console</span>.log(n);
+</div></code></pre>
+
+<ol start="8"><li rel="8"><p>下面代码输出结果</p></li>
+</ol>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-javascript hljs"><div class="hljs-line"><span class="hljs-keyword">var</span> str = <span class="hljs-string">'abc123'</span>;
+</div><div class="hljs-line"><span class="hljs-keyword">var</span> num = <span class="hljs-built_in">parseInt</span>(str);
+</div><div class="hljs-line"><span class="hljs-keyword">if</span> (num == <span class="hljs-literal">NaN</span>) {
+</div><div class="hljs-line">    alert(<span class="hljs-literal">NaN</span>);
+</div><div class="hljs-line">} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (num == <span class="hljs-number">123</span>) {
+</div><div class="hljs-line">    alert(<span class="hljs-number">123</span>);
+</div><div class="hljs-line">} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> num == <span class="hljs-string">'number'</span>) {
+</div><div class="hljs-line">    alert(<span class="hljs-string">'number'</span>);
+</div><div class="hljs-line">} <span class="hljs-keyword">else</span> {
+</div><div class="hljs-line">    alert(<span class="hljs-string">'str'</span>);
+</div><div class="hljs-line">}
+</div></code></pre>
+
+<ol start="9"><li rel="9"><p>下面代码输出结果</p></li>
+</ol>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-javascript hljs"><div class="hljs-line"><span class="hljs-keyword">if</span> (<span class="hljs-built_in">isNaN</span>(<span class="hljs-literal">NaN</span>) == <span class="hljs-string">""</span>) {
+</div><div class="hljs-line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"珠峰"</span>)
+</div><div class="hljs-line">} <span class="hljs-keyword">else</span> {
+</div><div class="hljs-line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"培训"</span>)
+</div><div class="hljs-line">}
+</div></code></pre>
+
+<ol start="10"><li rel="10"><p>a等于多少，会让条件成立「多种方案」</p></li>
+</ol>
+
+<pre class="prettyprint hljs-dark"><code class="language-javascript hljs"><div class="hljs-line"><span class="hljs-keyword">let</span> a = ?;
+</div><div class="hljs-line"><span class="hljs-keyword">if</span> (a == <span class="hljs-number">1</span> &amp;&amp; a == <span class="hljs-number">2</span> &amp;&amp; a == <span class="hljs-number">3</span>) {
+</div><div class="hljs-line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'OK'</span>);
+</div><div class="hljs-line">}
+</div></code></pre>
+
+<ol start="11"><li rel="11"><p>下面代码输出结果</p></li>
+</ol>
+
+<pre class="prettyprint hljs-dark"><code class="language-javascript hljs"><div class="hljs-line"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">12.5</span>, <span class="hljs-number">100</span>, <span class="hljs-number">0013</span>, <span class="hljs-string">'27px'</span>, <span class="hljs-number">456</span>];
+</div><div class="hljs-line">arr = arr.map(<span class="hljs-built_in">parseInt</span>);
+</div></code></pre>
+
+<ol start="12"><li rel="12"><p>编写plus和minus方法，可以解决浮点数加减运算中的精准度问题</p></li>
+</ol>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-javascript hljs"><div class="hljs-line"><span class="hljs-keyword">const</span> plus = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">plus</span>(<span class="hljs-params">n,m</span>)</span>{
+</div><div class="hljs-line">    ...
+</div><div class="hljs-line">};
+</div><div class="hljs-line"><span class="hljs-keyword">const</span> minus = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">minus</span>(<span class="hljs-params">n,m</span>)</span>{
+</div><div class="hljs-line">    ...
+</div><div class="hljs-line">};
+</div></code></pre></div></body></html>
