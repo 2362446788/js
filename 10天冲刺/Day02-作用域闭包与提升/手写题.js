@@ -15,7 +15,29 @@
  * - 高频前端手写题
  */
 function debounce(fn, wait = 300, immediate = false) {
-  // TODO
+  // 前置参数判断
+  if (typeof fn !== "function") {
+    throw new TypeError("fn is not a function!");
+  }
+  let timer = null;
+  return function operate(...args) {
+    // 是否需要在第一次触发
+    const callNow = immediate && !timer;
+    if (timer) {
+      clearTimeout(timer);
+      timer = null;
+    }
+    timer = setTimeout(() => {
+      // 先把 timer 清理，防止后续有不知名的逻辑混乱
+      timer = null;
+      if (!immediate) {
+        fn.apply(this, args);
+      }
+    }, wait);
+    if (callNow) {
+      fn.apply(this, args);
+    }
+  };
 }
 
 /**
@@ -29,7 +51,36 @@ function debounce(fn, wait = 300, immediate = false) {
  * - 高频前端手写题
  */
 function throttle(fn, wait = 300) {
-  // TODO
+  // 前置参数判断
+  if (typeof fn !== "function") {
+    throw new TypeError("fn is not a function!");
+  }
+  // 记录上一次触发的时间
+  let previous = 0;
+  // 定时器
+  let timer = null;
+  return function operate(...params) {
+    // 记录当前时间节点
+    let now = Date.now();
+    // 如果是第一次 wait - (now - previous) 必定小于 0
+    const remaining = wait - (now - previous);
+    if (remaining <= 0) {
+      if (timer) {
+        clearTimeout(timer);
+        timer = null;
+      }
+      // 两次触发的间隔时间超过设定的频率，则立即执行函数
+      fn.call(this, ...params);
+      previous = now;
+    } else if (!timer) {
+      timer = setTimeout(() => {
+        timer = null;
+        // 间隔时间不足设定的频率，而且还未设置等待的定时器，则设置定时器等待执行函数即可
+        fn.call(this, ...params);
+        previous = Date.now();
+      }, remaining);
+    }
+  };
 }
 
 /**
@@ -42,7 +93,14 @@ function throttle(fn, wait = 300) {
  * - 高频前端闭包手写题
  */
 function once(fn) {
-  // TODO
+  let called = false;
+  let result;
+  return function operate(...params) {
+    if (called) return result;
+    called = true;
+    result = fn.apply(this, params);
+    return result;
+  };
 }
 
 /**
@@ -57,7 +115,16 @@ function once(fn) {
  * - 2026 Front End Interview Handbook higher-order / curry questions
  */
 function curry(fn) {
-  // TODO
+  const length = fn.length;
+  function curried(...args) {
+    if (args.length >= length) {
+      return fn.apply(this, args);
+    }
+    return function operate(...nextArgs) {
+      return curried.apply(this, args.concat(nextArgs));
+    };
+  }
+  return curried;
 }
 
 export { debounce, throttle, once, curry };

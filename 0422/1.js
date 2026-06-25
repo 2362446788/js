@@ -1,4 +1,4 @@
-/* 
+/*
 function C1(name) {
     if (name) {
         this.name = name;
@@ -18,7 +18,7 @@ alert(
     (new C2().name) +
     (new C3().name)
 );
-// "Tomundefinedjoin" 
+// "Tomundefinedjoin"
 */
 
 /* function Foo() {
@@ -48,12 +48,12 @@ new Foo().getName();
 new new Foo().getName(); */
 
 
-/* 
+/*
  鸭子类型「鸭子辨型」
    + 类数组
    + 类promise
    + ...
- 
+
  类数组的结构和数组类似，但是不是数组「不是Array的实例」，所以无法直接使用Array.prototype原型上的方法，如果想用该如何处理：
    + 把类数组转换为数组
    + 直接借用
@@ -62,12 +62,12 @@ new new Foo().getName(); */
    + 修改原型指向
    ...
  */
-let obj = {
-    0: 10,
-    1: 20,
-    2: 30,
-    length: 3
-};
+// let obj = {
+//     0: 10,
+//     1: 20,
+//     2: 30,
+//     length: 3
+// };
 // obj.push(100); //Uncaught TypeError: obj.push is not a function
 
 /* 4.修改类数组的原型指向 */
@@ -113,7 +113,7 @@ console.log(obj); */
 // arr = [].slice.call(obj);
 // console.log(arr);
 
-/* 
+/*
 // ====> 之所以可以借用，是因为类数组的结构和数组几乎一样，那么操作数组的相关方法（尤其是代码），同样也适合于操作类数组，此时我们只要把方法执行，让方法中的this改变为类数组，这样就相当于直接操作的是类数组 => “借用数组原型上方法实现对类数组的操作”
 // 把类数组obj转数组
 // let arr = [];
@@ -133,5 +133,5 @@ Array.prototype.slice = function slice() {
 };
 let arr = [10, 20, 30];
 let arr2 = arr.slice();
-console.log(arr2, arr2 === arr); 
+console.log(arr2, arr2 === arr);
 */

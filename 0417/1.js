@@ -3,19 +3,19 @@
  函数节流：用户频繁操作的时候，不根据用户的频繁操作度来绝定触发多少次，而是根据设定好的频率进行触发，实现“降频”的效果，相对于防抖来讲，节流是允许触发多次的！！
  */
 
-/* const submit = document.querySelector('#submit');
+const submit = document.querySelector('#submit');
 
 const func = function func(ev) {
     console.log('OK', ev, this);
 };
 submit.onclick = utils.debounce(func, 500);
 // utils.debounce(func, 500, true)
-// utils.debounce(func, 500) 
+// utils.debounce(func, 500)
 // utils.debounce(func, true)
 // utils.debounce(func)
- */
 
-/* 
+
+
 // 我们假设，只要300MS(规定的高频率触发规则)内触发两次及以上，我们就识别为频繁触发，则最后把需要做的事情只做一次
 const func = function func() {
     console.log('OK');
@@ -29,17 +29,17 @@ submit.onclick = function () {
     timer = setTimeout(() => {
         func();
     }, 300);
-}; 
-*/
+};
 
-/* 
+
+
 submit.onclick = function () {
     console.log('OK'); //疯狂点击多少次按钮，方法就会被执行多少次
-}; 
-*/
+};
 
 
-/* 
+
+
 // 场景一：点击按钮，向服务器发送请求（需要一定的时间），在当前请求没有成功之前，再次点击按钮应该什么都不处理才对
 //   + submit是提交按钮
 //   + this.$api.postInfo() 向服务器发送请求，而account和password是我们要传递给服务器的账号密码
@@ -56,8 +56,8 @@ submit.onclick = async function () {
     });
     // 第一次发送的请求成功了：把isRung回归初始值
     isRun = false;
-}; 
-*/
+};
+
 
 const func = function func() {
     console.log('OK');

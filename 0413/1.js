@@ -1,19 +1,19 @@
-/* 
+/*
 const fn = function fn(...params) {
     // params:[1,2]
     return function anonymous(...args) {
         // args:[3]
         return params.concat(args).reduce((res, item) => res + item);
     };
-}; 
+};
 */
-/* 
+/*
 const fn = (...params) => (...args) => params.concat(args).reduce((res, item) => res + item);
 let res = fn(1, 2)(3);
-console.log(res); //=>6  1+2+3  
+console.log(res); //=>6  1+2+3
 */
 
-/* // curring:柯理化函数
+// curring:柯理化函数
 // 它是一种思想，一种“预先存储”的思想，也是闭包的进阶应用「保存」：我们让函数执行产生闭包，把一些后续要用到的值，存储到闭包的某个私有变量中，那么其下级上下文想用的时候直接拿来用即可！！
 const curring = function curring() {
     // EC(CURRING)会产生闭包
@@ -39,7 +39,7 @@ console.log(+res); //->10
 
 add = curring();
 res = add(1)(2)(3)(4)(5);
-console.log(+res); //->15 */
+console.log(+res); //->15
 
 
 
@@ -62,17 +62,17 @@ let total = arr.reduce((res, item, index) => {
 });
 console.log(total); */
 
-/* 
+/*
 let total = 0;
 arr.forEach(item => {
     total += item;
 });
-console.log(total); 
+console.log(total);
 */
 
-/* 
+/*
 arr.join('+') //'1+2+3+4'
-eval('1+2+3+4') //10  eval可以把字符串变为JS表达式去执行 
+eval('1+2+3+4') //10  eval可以把字符串变为JS表达式去执行
 //-----
 console.log(eval(arr.join('+')));
 */
