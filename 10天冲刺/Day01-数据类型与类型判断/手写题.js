@@ -43,7 +43,9 @@ function getType(value) {
  * - 飞书《大前端面试宝典》Q73
  */
 function isEmptyObject(obj) {
-  // TODO
+  if (Object.prototype.toString.call(obj) !== "[object Object]") return false;
+  // Reflect.ownKeys(obj) = Object.getOwnPropertyNames() + Object.getOwnPropertySymbols()
+  return Reflect.ownKeys(obj).length === 0;
 }
 
 /**
@@ -59,7 +61,10 @@ function isEmptyObject(obj) {
  * - 飞书《大前端面试宝典》Q105
  */
 function arrayLikeToArray(value) {
-  // TODO
+  if (value == null) return [];
+  const length = value.length;
+  if (typeof length !== "number" || length < 0) return [];
+  return Array.from(value);
 }
 
 /**
@@ -82,6 +87,26 @@ function preciseAdd(a, b) {
 
 function preciseSub(a, b) {
   // TODO
+}
+
+/**
+ * 题目 5：判断一个对象是纯净对象
+ */
+function isPlainObject(value) {
+  if (value === null || typeof value !== "object") {
+    return false;
+  }
+  // 获取原型
+  let proto = Object.getPrototypeOf(value);
+  // 如果原型为 null，说明是 Object.create(null) 创建的值或者是 Object 构造函数
+  if (!proto) {
+    return true;
+  }
+  // 获取对应的构造函数
+  let ctor =
+    Object.prototype.hasOwnProperty.call(proto, "constructor") &&
+    proto.constructor;
+  return ctor === Object;
 }
 
 export { getType, isEmptyObject, arrayLikeToArray, preciseAdd, preciseSub };
