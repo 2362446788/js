@@ -99,8 +99,52 @@ function promiseAny(promises) {
  * 来源：
  * - 高频前端异步控制手写题
  */
+// reduce + async/await
 function serialRun(tasks) {
-  // TODO
+  return tasks.reduce(async (cur, next) => {
+    let result = await cur;
+    let value = await next();
+    result.push(value);
+    return result;
+  }, Promise.resolve([]));
+}
+// reduce + promise then
+function serialRun1(tasks) {
+  return tasks.reduce((cur, next) => {
+    return cur.then((result) => {
+      let item = task();
+      return Promise.resolve(item).then((value) => result.concat(value));
+    });
+  }, Promise.resolve([]));
+}
+// 循环调用
+function serialRun3(tasks) {
+  async function run() {
+    let result = [];
+    let index = 0;
+    while (index < tasks.length) {
+      let task = tasks[index];
+      let value = await task();
+      result[index] = value;
+      index++;
+    }
+    return result;
+  }
+  return run();
+}
+// （面试别着急写递归，很容易错乱）递归调用
+function serialRun2(tasks) {
+  let result = [];
+  let index = 0;
+  const next = async () => {
+    if (index >= tasks.length) return;
+    let task = tasks[index];
+    let value = await task();
+    result[index] = value;
+    index++;
+    await next();
+  };
+  return next().then(() => result);
 }
 
 /**
@@ -114,7 +158,29 @@ function serialRun(tasks) {
  * - 2026 前端高频手写题趋势：Promise 并发控制
  */
 async function promiseLimit(tasks, limit) {
-  // TODO
+  // 获取tasks的长度和limit的最小值
+  // 创建对应的工作区，然后在工作区中执行task，使用循环去执行，当task都执行完之后将结果保存下来
+  // 使用promise all来等待工作区中的所有promise都执行完毕
+  let workerNum = Math.min(tasks.length, limit);
+  let index = 0;
+  let results = [];
+  // 创建工作区
+  let works = Array.from({ length: workerNum }, async () => {
+    while (index < tasks.length) {
+      let task = tasks[index];
+      let curIndex = index;
+      index++;
+      try {
+        let value = await task();
+        results[curIndex] = value;
+      } catch (_) {
+        // 错误的时候怎么处理
+        results[curIndex] = null;
+      }
+    }
+  });
+  await Promise.all(works);
+  return results;
 }
 
 /**

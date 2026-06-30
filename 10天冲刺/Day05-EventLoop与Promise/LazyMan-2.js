@@ -43,6 +43,16 @@ class _LazyMan {
       this.run();
     });
   }
+  // 更简易的写法，使用循环过程中的等待
+  // async run() {
+  //   // 递归调用队列中的数据
+  //   // 递归到哪一项
+  //   let index = 0;
+  //   while (index < this.queue.length) {
+  //     let task = this.queue[index++];
+  //     await task();
+  //   }
+  // }
   run() {
     // 递归调用队列中的数据
     // 递归到哪一项
@@ -108,6 +118,6 @@ const LazyMan = (name) => {
 };
 
 // LazyMan("Hank");
-LazyMan("Hank").sleep(2).eat("dinner");
+// LazyMan("Hank").sleep(2).eat("dinner");
 // LazyMan("Hank").eat("dinner").eat("supper");
-// LazyMan("Hank").eat("dinner").sleepFirst(2);
+LazyMan("Hank").eat("dinner").sleepFirst(2);
